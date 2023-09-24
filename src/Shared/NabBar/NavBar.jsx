@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <>
-      <div className="navbar bg-base-100 shadow-xl hover:shadow-slate-300 rounded-lg  hover:bg-white hover:border-gray-900 border-4 mb-6">
+      <div className="navbar  shadow-xl rounded-lg  hover:bg-white  border-4 h-4 mb-2">
         <div className="flex-1">
-          <Link to="/" className="btn btn-neutral normal-case text-xl">
-            TeamSync
+          <Link to="/" className="btn normal-case text-xl">
+            HalalFood Shop
           </Link>
         </div>
         <div className="flex-none gap-2">
