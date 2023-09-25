@@ -5,9 +5,12 @@ import NavBar from '../Shared/NabBar/NavBar'
 
 function Main() {
 	return (
-		<div>
+		<div >
 			<NavBar/>
+			<div className='mx-auto'>
 			<Outlet/>
+			</div>
+		
 			<Footer/>
 		</div>
 	)

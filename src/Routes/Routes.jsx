@@ -3,6 +3,8 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Dashboard from "../Dashboard/Dashboard";
 import AddProducts from "../Dashboard/Admin/AddProducts";
+import Login from "../Auth/Login";
+import SignUp from "../Auth/Signup";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +26,15 @@ export const router = createBrowserRouter([
 			
 				]
       },
+			{
+				path: "/login",
+        element: <Login />,
+			}
+			,
+			{
+				path: "/signup",
+        element: <SignUp/>,
+			}
     ],
   },
 ]);

@@ -41,10 +41,10 @@ function NavBar() {
               ) : ( */}
               {/* <> */}
               <li>
-                <Link>Login</Link>
+                <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link>Register</Link>
+                <Link to="/signup">SignUp</Link>
               </li>
               {/* </> */}
               {/* )} */}

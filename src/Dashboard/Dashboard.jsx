@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 function Dashboard() {
 	return (
 		<>
-		<div className='flex'>
+		<div className='flex h-screen'>
 		<Menu/>
 	   <Outlet/>
 		</div>
