@@ -29,7 +29,7 @@ function Login() {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
-
+    console.log(data);
     localStorage.setItem("token", data.token);
     localStorage.setItem("LoggedUserId", data.userId);
 

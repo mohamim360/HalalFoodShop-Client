@@ -5,6 +5,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import AddProducts from "../Dashboard/Admin/AddProducts";
 import Login from "../Auth/Login";
 import SignUp from "../Auth/Signup";
+import AllUsers from "../Dashboard/Admin/AllUsers";
+import PrivateAdminRoute from "./PrivateAdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ export const router = createBrowserRouter([
 				children:[
 					{
 						path:"/dashboard/addProducts",
-						element:<AddProducts/>
+						element:<PrivateAdminRoute><AddProducts/></PrivateAdminRoute>
+					},
+					{
+						path:"/dashboard/allUsers",
+						element:<PrivateAdminRoute><AllUsers/></PrivateAdminRoute>
 					}
 			
 				]
