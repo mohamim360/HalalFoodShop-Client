@@ -7,6 +7,7 @@ import Login from "../Auth/Login";
 import SignUp from "../Auth/Signup";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import PrivateAdminRoute from "./PrivateAdminRoute";
+import ManageProducts from "../Dashboard/Admin/ManageProducts";
 
 export const router = createBrowserRouter([
   {
@@ -20,27 +21,49 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
-				children:[
-					{
-						path:"/dashboard/addProducts",
-						element:<PrivateAdminRoute><AddProducts/></PrivateAdminRoute>
-					},
-					{
-						path:"/dashboard/allUsers",
-						element:<PrivateAdminRoute><AllUsers/></PrivateAdminRoute>
-					}
-			
-				]
+        children: [
+          {
+            path: "/dashboard/addProducts",
+            element: (
+              <PrivateAdminRoute>
+                <AddProducts />
+              </PrivateAdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/edit-products",
+            element: (
+              <PrivateAdminRoute>
+                <AddProducts />
+              </PrivateAdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/allUsers",
+            element: (
+              <PrivateAdminRoute>
+                <AllUsers />
+              </PrivateAdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/manage-products",
+            element: (
+              <PrivateAdminRoute>
+                <ManageProducts />
+              </PrivateAdminRoute>
+            ),
+          },
+        ],
       },
-			{
-				path: "/login",
+      {
+        path: "/login",
         element: <Login />,
-			}
-			,
-			{
-				path: "/signup",
-        element: <SignUp/>,
-			}
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
     ],
   },
 ]);

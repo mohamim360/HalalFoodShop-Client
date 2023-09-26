@@ -9,14 +9,14 @@ function PrivateAdminRoute({ children }) {
 
 
   const fetchData = async () => {
-    const response = await fetch(`http://localhost:5000/user/users/${userId}`, {
+    const response = await fetch(`http://localhost:5000/admin/user/users/${userId}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
     });
     const data = await response.json();
     setUserRole(data.user.role);
-    setLoading(false);
+ 
   };
 
   useEffect(() => {

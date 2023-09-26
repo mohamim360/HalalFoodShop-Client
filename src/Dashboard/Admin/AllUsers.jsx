@@ -6,7 +6,7 @@ function AllUsers() {
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/user/users", {
+    const response = await fetch("http://localhost:5000/admin/user/users", {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -24,7 +24,7 @@ function AllUsers() {
   const changeUserRole = async (userId, currentRole) => {
     const newRole = currentRole === "User" ? "Admin" : "User";
 
-    const response = await fetch(`http://localhost:5000/user/users/${userId}`, {
+    const response = await fetch(`http://localhost:5000/admin/user/users/${userId}`, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + token,
@@ -45,7 +45,7 @@ function AllUsers() {
   };
 
   const deleteUser = async (userId) => {
-    const response = await fetch(`http://localhost:5000/user/users/${userId}`, {
+    const response = await fetch(`http://localhost:5000/admin/user/users/${userId}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
