@@ -19,8 +19,8 @@ function Menu() {
           </li>
         </PrivateAdminRoute>
 
-        <li>
-          <a>Item 3</a>
+        <li className="p-2">
+          <Link>My Cart</Link>
         </li>
       </ul>
     </>

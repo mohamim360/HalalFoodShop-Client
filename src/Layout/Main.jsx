@@ -5,9 +5,9 @@ import NavBar from '../Shared/NabBar/NavBar'
 
 function Main() {
 	return (
-		<div >
+		<div>
 			<NavBar/>
-			<div className='mx-auto'>
+			<div className='mx-auto h-screen'>
 			<Outlet/>
 			</div>
 		

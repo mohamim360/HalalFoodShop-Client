@@ -13,7 +13,7 @@ function NavBar() {
         <div>
         <ul className="flex flex-row  shadow menu menu-sm bg-base-100 rounded-box ">
             <li>
-              <Link>Products</Link>
+              <Link to="/products/all-products">Products</Link>
             </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>

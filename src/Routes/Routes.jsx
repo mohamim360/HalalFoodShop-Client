@@ -9,6 +9,8 @@ import AllUsers from "../Dashboard/Admin/AllUsers";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import ManageProducts from "../Dashboard/Admin/ManageProducts";
 import EditProduct from "../Dashboard/Admin/EditProduct";
+import Products from "../Shop/Products";
+import AllProduct from "../Shop/AllProduct/AllProduct";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/products/all-products",
+        element: <Products />, 
       },
       {
         path: "/dashboard",
@@ -35,7 +41,7 @@ export const router = createBrowserRouter([
             path: "/dashboard/edit-products/:prodId",
             element: (
               <PrivateAdminRoute>
-                <EditProduct/>
+                <EditProduct />
               </PrivateAdminRoute>
             ),
           },
