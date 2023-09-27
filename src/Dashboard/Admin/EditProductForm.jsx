@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-function AddProducts() {
-  const token = localStorage.getItem("token");
-
+function EditProductForm(props) {
   const [formData, setFormData] = useState({
-    name: "",
-    price: "",
-    quantity: "",
-    description: "",
-    category: "",
+    name: props.productData.product.name,
+    price: props.productData.product.price,
+    quantity: props.productData.product.quantity,
+    description: props.productData.product.description,
+    category: props.productData.product.category,
   });
+
+  const token = localStorage.getItem("token");
 
   const nameHandler = (e) => {
     setFormData({ ...formData, name: e.target.value });
@@ -30,14 +30,15 @@ function AddProducts() {
   const categoryHandler = (e) => {
     setFormData({ ...formData, category: e.target.value });
   };
+  console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const prodId = props.prodId;
     const response = await fetch(
-      "http://localhost:5000/admin/product/add-products",
+      `http://localhost:5000/admin/product/products/edit-product/${prodId}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
@@ -46,7 +47,7 @@ function AddProducts() {
       }
     );
     const data = await response.json();
-    console.log(formData);
+
     setFormData({
       name: "",
       price: "",
@@ -65,7 +66,6 @@ function AddProducts() {
             placeholder="Product Name"
             className="input input-bordered w-full max-w-xs mb-4"
             value={formData.name}
-        
             onChange={nameHandler}
           />
 
@@ -108,7 +108,7 @@ function AddProducts() {
             onChange={descriptionHandler}
           ></textarea>
           <div className="text-center mb-2">
-            <button className="btn btn-outline">Add Products</button>
+            <button className="btn btn-outline">Update Product</button>
           </div>
         </div>
       </form>
@@ -116,4 +116,4 @@ function AddProducts() {
   );
 }
 
-export default AddProducts;
+export default EditProductForm;

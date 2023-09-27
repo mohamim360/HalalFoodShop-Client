@@ -8,6 +8,7 @@ import SignUp from "../Auth/Signup";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import ManageProducts from "../Dashboard/Admin/ManageProducts";
+import EditProduct from "../Dashboard/Admin/EditProduct";
 
 export const router = createBrowserRouter([
   {
@@ -31,10 +32,10 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "/dashboard/edit-products",
+            path: "/dashboard/edit-products/:prodId",
             element: (
               <PrivateAdminRoute>
-                <AddProducts />
+                <EditProduct/>
               </PrivateAdminRoute>
             ),
           },

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useEditProduct } from "../../Hooks/EditProductProvider";
+
 function ManageProducts() {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const {setEditProductData} = useEditProduct();
+
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
@@ -19,27 +19,14 @@ function ManageProducts() {
     const data = await response.json();
     setProducts(data.products);
     setIsLoading(false);
-    setEditProductData(data.editing);
+   
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const editProduct = async (prodId) => {
-    const response = await fetch(
-      `http://localhost:5000/admin/product/products/${prodId}?edit=true`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    const data = await response.json();
- 
-    setEditProductData(data);
-  
-  };
+
 
   return (
     <>
@@ -69,12 +56,12 @@ function ManageProducts() {
                   <td>{product.price}</td>
                   <td>{product.category}</td>
                   <th>
-                    <Link to="/dashboard/edit-products">
+                    <Link to={`/dashboard/edit-products/${product._id}`}>
                       <button
                         className="btn btn-outline btn-sm mr-2"
-                        onClick={() => {
-                          editProduct(product._id);
-                        }}
+                        // onClick={() => {
+                        //   editProduct(product._id);
+                        // }}
                       >
                         Edit
                       </button>
