@@ -19,14 +19,28 @@ function ManageProducts() {
     const data = await response.json();
     setProducts(data.products);
     setIsLoading(false);
-   
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
+  const deleteProduct = async (prodId) => {
+    const response = await fetch(
+      `http://localhost:5000/admin/product/products/${prodId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    if (response.ok) {
+      setProducts((prevProducts) => prevProducts.filter((product) => product._id !== prodId));
+    } else {
+      console.error("Failed to delete user");
+    }
+  };
 
   return (
     <>
@@ -57,19 +71,14 @@ function ManageProducts() {
                   <td>{product.category}</td>
                   <th>
                     <Link to={`/dashboard/edit-products/${product._id}`}>
-                      <button
-                        className="btn btn-outline btn-sm mr-2"
-                        // onClick={() => {
-                        //   editProduct(product._id);
-                        // }}
-                      >
+                      <button className="btn btn-outline btn-sm mr-2">
                         Edit
                       </button>
                     </Link>
 
                     <button
                       className="btn btn-outline btn-sm"
-                      // onClick={() => deleteUser(user._id)}
+                      onClick={() => deleteProduct(product._id)}
                     >
                       Delete
                     </button>
