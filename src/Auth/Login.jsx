@@ -9,7 +9,7 @@ function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const emailHandler = (event) => {
     setFormData({ ...formData, email: event.target.value });
@@ -33,13 +33,13 @@ function Login() {
     localStorage.setItem("token", data.token);
     localStorage.setItem("LoggedUserId", data.userId);
 
-    // const remainingMilliseconds = 60 * 60 * 1000;
-    // const expiryDate = new Date(new Date().getTime() + remainingMilliseconds);
-    // localStorage.setItem("expiryDate", expiryDate.toISOString());
+    const remainingMilliseconds = 60 * 60 * 1000;
+    const expiryDate = new Date(new Date().getTime() + remainingMilliseconds);
+    localStorage.setItem("expiryDate", expiryDate.toISOString());
      setIsLoading(false);
-    // if (response.ok) {
-    //   navigate("/");
-    // }
+    if (response.ok) {
+      navigate("/");
+    }
   };
 
   return (

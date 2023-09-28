@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,6 +9,8 @@ function SignUp() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const nameHandler = (event) => {
     setFormData({ ...formData, name: event.target.value });
@@ -33,9 +35,9 @@ function SignUp() {
     });
 		console.log(formData)
     setIsLoading(false);
-    // if (response.ok) {
-    //   navigate("/login");
-    // }
+    if (response.ok) {
+      navigate("/login");
+    }
   };
 
   return (
