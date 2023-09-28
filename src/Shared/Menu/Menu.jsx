@@ -1,9 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PrivateAdminRoute from "../../Routes/PrivateAdminRoute";
 
 function Menu() {
- 
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const cartLinkHandler = (e) =>{
+    if(!token){
+      e.preventDefault();
+      navigate("/login");
+    }
+   
+  }
   return (
     <>
       <ul className="menu bg-base-200 w-56 rounded-box w-max">
@@ -20,7 +28,7 @@ function Menu() {
         </PrivateAdminRoute>
 
         <li className="p-2">
-          <Link>My Cart</Link>
+          <Link to="/dashboard/cart" onClick={(e) => cartLinkHandler(e)}>My Cart</Link>
         </li>
       </ul>
     </>

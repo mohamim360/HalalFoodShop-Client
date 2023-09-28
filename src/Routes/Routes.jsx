@@ -4,13 +4,14 @@ import Home from "../Pages/Home/Home/Home";
 import Dashboard from "../Dashboard/Dashboard";
 import AddProducts from "../Dashboard/Admin/AddProducts";
 import Login from "../Auth/Login";
-import SignUp from "../Auth/Signup";
+import SignUp from "../Auth/SignUp";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import ManageProducts from "../Dashboard/Admin/ManageProducts";
 import EditProduct from "../Dashboard/Admin/EditProduct";
 import Products from "../Shop/Products";
-import AllProduct from "../Shop/AllProduct/AllProduct";
+import Cart from "../Shop/cart/Cart";
+import PrivateAuthRoute from "./PrivateAuthRoute";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ export const router = createBrowserRouter([
               <PrivateAdminRoute>
                 <ManageProducts />
               </PrivateAdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/cart",
+            element: (
+              <PrivateAuthRoute>
+                <Cart />
+              </PrivateAuthRoute>
             ),
           },
         ],
