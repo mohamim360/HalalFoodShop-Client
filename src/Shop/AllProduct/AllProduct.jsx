@@ -7,13 +7,8 @@ function AllProduct() {
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/shop/all-products", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const response = await fetch("http://localhost:5000/shop/all-products");
     const data = await response.json();
-
     setProducts(data.products);
     setIsLoading(false);
   };
@@ -21,6 +16,17 @@ function AllProduct() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const cartHandler = async (prodId) => {
+    const response = await fetch(`http://localhost:5000/shop/cart`, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({prodId}),
+    });
+  };
 
   return (
     <>
@@ -53,7 +59,12 @@ function AllProduct() {
                 </div>
               </div>
               <div className="text-center mb-2">
-                <button className="btn btn-outline">Add TO CART</button>
+                <button
+                  className="btn btn-outline"
+                  onClick={() => cartHandler(product._id)}
+                >
+                  Add TO CART
+                </button>
               </div>
             </div>
           ))}
