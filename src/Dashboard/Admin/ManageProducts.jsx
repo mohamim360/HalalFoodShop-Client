@@ -36,7 +36,9 @@ function ManageProducts() {
       }
     );
     if (response.ok) {
-      setProducts((prevProducts) => prevProducts.filter((product) => product._id !== prodId));
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product._id !== prodId)
+      );
     } else {
       console.error("Failed to delete user");
     }
@@ -45,7 +47,8 @@ function ManageProducts() {
   return (
     <>
       {!isLoading && (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto m-auto">
+          <h1 className="text-center p-4 font-bold text-xl">Manage Products</h1>
           <table className="table">
             {/* head */}
             <thead>

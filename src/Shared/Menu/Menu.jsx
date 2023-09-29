@@ -5,19 +5,18 @@ import PrivateAdminRoute from "../../Routes/PrivateAdminRoute";
 function Menu() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const cartLinkHandler = (e) =>{
-    if(!token){
+  const linkHandler = (e) => {
+    if (!token) {
       e.preventDefault();
       navigate("/login");
     }
-   
-  }
+  };
   return (
     <>
       <ul className="menu bg-base-200 w-56 rounded-box w-max">
         <PrivateAdminRoute>
           <li className="p-2">
-            <Link to="/dashboard/addProducts" >Add Products</Link>
+            <Link to="/dashboard/addProducts">Add Products</Link>
           </li>
           <li className="p-2">
             <Link to="/dashboard/allUsers">All Users</Link>
@@ -28,8 +27,15 @@ function Menu() {
         </PrivateAdminRoute>
 
         <li className="p-2">
-          <Link to="/dashboard/cart" onClick={(e) => cartLinkHandler(e)}>My Cart</Link>
+          <Link to="/dashboard/cart" onClick={(e) => linkHandler(e)}>
+            My Cart
+          </Link>
         </li>
+        {/* <li className="p-2">
+          <Link to="/dashboard/order" onClick={(e) => linkHandler(e)}>
+            My Order
+          </Link>
+        </li> */}
       </ul>
     </>
   );

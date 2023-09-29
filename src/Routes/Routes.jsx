@@ -12,6 +12,7 @@ import EditProduct from "../Dashboard/Admin/EditProduct";
 import Products from "../Shop/Products";
 import Cart from "../Shop/cart/Cart";
 import PrivateAuthRoute from "./PrivateAuthRoute";
+import Order from "../Shop/Order/Order";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ export const router = createBrowserRouter([
             element: (
               <PrivateAuthRoute>
                 <Cart />
+              </PrivateAuthRoute>
+            ),
+          },
+          {
+            path: "/dashboard/order",
+            element: (
+              <PrivateAuthRoute>
+                <Order/>
               </PrivateAuthRoute>
             ),
           },

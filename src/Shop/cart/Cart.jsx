@@ -28,10 +28,39 @@ function Cart() {
     fetchData();
   }, []);
 
+  const deleteCart = async (prodId) => {
+    const response = await fetch(
+      `http://localhost:5000/shop/cart/delete-cart/${prodId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+
+    if (response.ok) {
+      setCarts((prevCarts) =>
+        prevCarts.filter((cart) => cart.productId._id !== prodId)
+      );
+    } else {
+      console.error("Failed to delete cart");
+    }
+  };
+
+  useEffect(() => {
+    const updatedTotalPrice = carts.reduce(
+      (sum, cartItem) => sum + cartItem.productId.price,
+      0
+    );
+    setTotalPrice(updatedTotalPrice);
+  }, [carts]);
+
   return (
     <>
       {!isLoading && (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto m-auto">
+					<h1 className="text-center p-4 font-bold text-xl">My Cart</h1>
           <table className="table">
             {/* head */}
             <thead>
@@ -43,7 +72,7 @@ function Cart() {
               </tr>
             </thead>
             {carts.map((cart) => (
-              <tbody key={cart._id}>
+              <tbody key={cart.productId._id}>
                 {/* row 1 */}
                 <tr>
                   <td>
@@ -58,7 +87,7 @@ function Cart() {
                   <th>
                     <button
                       className="btn btn-outline btn-sm"
-                      // onClick={() => deleteUser(user._id)}
+                      onClick={() => deleteCart(cart.productId._id)}
                     >
                       Delete
                     </button>
@@ -67,7 +96,7 @@ function Cart() {
               </tbody>
             ))}
           </table>
-          <div>
+          <div className="mt-8 border-2 text-center font-semibold">
             <h3>Total Price: ${totalPrice}</h3>
           </div>
         </div>

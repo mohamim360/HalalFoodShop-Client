@@ -62,7 +62,8 @@ function AllUsers() {
   return (
     <>
       {!isLoading && (
-        <div className="overflow-x-auto">
+      <div className="overflow-x-auto m-auto">
+      <h1 className="text-center p-4 font-bold text-xl">All Users</h1>
           <table className="table">
             {/* head */}
             <thead>
