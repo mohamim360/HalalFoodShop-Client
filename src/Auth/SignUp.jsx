@@ -10,6 +10,8 @@ function SignUp() {
     password: "",
   });
 
+  const [message, setMessage] = useState("");
+
   const navigate = useNavigate();
 
   const nameHandler = (event) => {
@@ -31,9 +33,11 @@ function SignUp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-			
     });
-		console.log(formData)
+    const data = await response.json();
+
+    setMessage(data.message);
+    console.log(formData);
     setIsLoading(false);
     if (response.ok) {
       navigate("/login");
@@ -44,6 +48,13 @@ function SignUp() {
     <>
       {!isLoading ? (
         <form onSubmit={submitHandler} className="flex justify-center">
+          {message && message.length > 0 ? (
+            <div className="alert alert-warning">
+              <span>{message}</span>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="form-control w-full max-w-xs m-auto rounded-lg m-6 p-4 border-4">
             <h1 className="m-auto pb-6 text-4xl text-gray-900 font-bold">
               SignUp

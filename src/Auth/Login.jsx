@@ -9,6 +9,8 @@ function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [message, setMessage] = useState("");
+
   const navigate = useNavigate();
 
   const emailHandler = (event) => {
@@ -29,14 +31,15 @@ function Login() {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
-    console.log(data);
+
+    setMessage(data.message);
     localStorage.setItem("token", data.token);
     localStorage.setItem("LoggedUserId", data.userId);
 
     const remainingMilliseconds = 60 * 60 * 1000;
     const expiryDate = new Date(new Date().getTime() + remainingMilliseconds);
     localStorage.setItem("expiryDate", expiryDate.toISOString());
-     setIsLoading(false);
+    setIsLoading(false);
     if (response.ok) {
       navigate("/");
     }
@@ -46,6 +49,13 @@ function Login() {
     <>
       {!isLoading ? (
         <div className="h-screen">
+          {message && message.length > 0 ? (
+            <div className="alert alert-warning">
+              <span>{message}</span>
+            </div>
+          ) : (
+            ""
+          )}
           <form onSubmit={submitHandler} className="flex justify-center mt-12">
             <div className="form-control w-full max-w-xs rounded-lg p-12 border-4">
               <h1 className="m-auto pb-6 text-4xl text-gray-900 font-bold">
@@ -75,9 +85,9 @@ function Login() {
               />
 
               <div className="pt-4">
-							<div className="pt-4">
-              <button className="btn btn-outline">Login</button>
-            </div>
+                <div className="pt-4">
+                  <button className="btn btn-outline">Login</button>
+                </div>
               </div>
 
               <div className="flex gap-2 pt-4 m-auto">

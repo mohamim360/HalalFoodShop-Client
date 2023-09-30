@@ -60,7 +60,7 @@ function Cart() {
     <>
       {!isLoading && (
         <div className="overflow-x-auto m-auto">
-					<h1 className="text-center p-4 font-bold text-xl">My Cart</h1>
+          <h1 className="text-center p-4 font-bold text-xl">My Cart</h1>
           <table className="table">
             {/* head */}
             <thead>
@@ -98,6 +98,10 @@ function Cart() {
           </table>
           <div className="mt-8 border-2 text-center font-semibold">
             <h3>Total Price: ${totalPrice}</h3>
+          </div>
+          <div>
+            <button className="btn btn-active btn-accent mt-8 payBtn">PAY</button>
+           
           </div>
         </div>
       )}
