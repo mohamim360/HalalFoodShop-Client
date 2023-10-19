@@ -2,8 +2,6 @@ import React from "react";
 
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
-import '../Styles/common.css'
-
 function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
@@ -24,7 +22,7 @@ function CheckoutForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="w-2/3 m-8" onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {

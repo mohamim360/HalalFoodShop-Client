@@ -9,7 +9,7 @@ function Payment() {
   return (
     <>
       
-			<div>
+			<div className="flex-none">
 			Payment
 			<Elements stripe={stripePromise}>
         <CheckoutForm></CheckoutForm>
