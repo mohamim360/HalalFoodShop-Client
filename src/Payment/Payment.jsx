@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Order() {
+function Payment() {
 	return (
 		<>
-		order
+		Payment
 		</>
 	)
 }
 
-export default Order
+export default Payment

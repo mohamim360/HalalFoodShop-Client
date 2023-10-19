@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [isLoading, setIsLoading] = useState(true);
@@ -100,8 +101,11 @@ function Cart() {
             <h3>Total Price: ${totalPrice}</h3>
           </div>
           <div>
-            <button className="btn btn-active btn-accent mt-8 payBtn">PAY</button>
-           
+            <Link to="/dashboard/cart/payment">
+              <button className="btn btn-active btn-accent mt-8 payBtn">
+                PAY
+              </button>
+            </Link>
           </div>
         </div>
       )}

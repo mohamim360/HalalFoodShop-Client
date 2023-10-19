@@ -12,7 +12,7 @@ import EditProduct from "../Dashboard/Admin/EditProduct";
 import Products from "../Shop/Products";
 import Cart from "../Shop/cart/Cart";
 import PrivateAuthRoute from "./PrivateAuthRoute";
-import Order from "../Shop/Order/Order";
+import Payment from "../Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products/all-products",
-        element: <Products />, 
+        element: <Products />,
       },
       {
         path: "/dashboard",
@@ -72,10 +72,10 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "/dashboard/order",
+            path: "/dashboard/cart/payment",
             element: (
               <PrivateAuthRoute>
-                <Order/>
+                <Payment />
               </PrivateAuthRoute>
             ),
           },
