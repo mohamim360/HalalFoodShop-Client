@@ -74,7 +74,7 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "/dashboard/cart/payment",
+        path: "/dashboard/cart/payment/:totalPrice",
         element: (
           <PrivateAuthRoute>
             <Payment />

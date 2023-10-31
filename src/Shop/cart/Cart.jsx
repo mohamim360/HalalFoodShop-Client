@@ -101,7 +101,7 @@ function Cart() {
             <h3>Total Price: ${totalPrice}</h3>
           </div>
           <div>
-            <Link to="/dashboard/cart/payment">
+            <Link to={`/dashboard/cart/payment/${totalPrice}`}>
               <button className="btn btn-active btn-accent mt-8 payBtn">
                 PAY
               </button>
