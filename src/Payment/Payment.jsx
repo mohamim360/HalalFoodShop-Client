@@ -8,17 +8,17 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 function Payment() {
   const { totalPrice } = useParams();
-  console.log(totalPrice);
+  const price = parseFloat(totalPrice).toFixed(2);
+
+  console.log(price);
   return (
     <>
-      
-			<div className="flex-none">
-			Payment
-			<Elements stripe={stripePromise}>
-        <CheckoutForm></CheckoutForm>
-      </Elements>
-			</div>
-   
+      <div className="flex-none">
+        Payment
+        <Elements stripe={stripePromise}>
+          <CheckoutForm price={price}></CheckoutForm>
+        </Elements>
+      </div>
     </>
   );
 }
