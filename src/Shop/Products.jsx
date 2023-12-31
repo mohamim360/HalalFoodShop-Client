@@ -1,11 +1,11 @@
-import React from "react";
+
 
 import AllProduct from "./AllProduct/AllProduct";
 
 function Products() {
   return (
     <>
-      <div className="h-screen flex flex-col justify-center">
+      <div className="flex flex-col justify-center">
 
        <AllProduct/>
       </div>

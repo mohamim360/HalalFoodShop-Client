@@ -27,7 +27,7 @@ function NavBar() {
 
   return (
     <>
-      <div className="navbar  shadow-xl rounded-lg  hover:bg-white  border-4 h-4 mb-2 flex justify-between">
+      <div className="navbar shadow-xl rounded-lg  hover:bg-white  border-4 h-4 mb-2 flex justify-between">
         <div>
           <Link to="/" className="btn normal-case text-xl">
             HalalFood Shop

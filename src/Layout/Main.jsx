@@ -5,14 +5,14 @@ import NavBar from '../Shared/NabBar/NavBar'
 
 function Main() {
 	return (
-		<div>
+		<>
 			<NavBar/>
-			<div className='mx-auto h-screen'>
+			<div className='mx-auto min-h-screen pb-16 pt-10'>
 			<Outlet/>
 			</div>
 		
 			<Footer/>
-		</div>
+		</>
 	)
 }
 

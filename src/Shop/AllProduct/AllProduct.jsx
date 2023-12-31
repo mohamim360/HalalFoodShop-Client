@@ -31,9 +31,9 @@ function AllProduct() {
   return (
     <>
       {!isLoading ? (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-2 m-auto gap-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 m-auto gap-4">
           {products.map((product) => (
-            <div className="card w-96 bg-base-100 border-4">
+            <div key={product._id} className="card w-96 bg-base-100 border-4">
               <figure>
                 <img
                   src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
