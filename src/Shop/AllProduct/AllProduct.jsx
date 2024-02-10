@@ -36,15 +36,14 @@ function AllProduct() {
             <div key={product._id} className="card w-96 bg-base-100 border-4">
               <figure>
                 <img
-                  src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                  alt="Shoes"
+                  src={`http://localhost:5000/${product.imageUrl}`} // Constructing the complete URL
+                  alt="Product"
                 />
               </figure>
               <div className="card-body flex flex-row justify-between flex-wrap">
                 <div className="flex flex-col gap-2">
                   <h2 className="card-title">
                     {product.name}
-                    {/* <div className="badge badge-secondary">NEW</div> */}
                   </h2>
                 </div>
                 <div className="my-auto flex flex-col gap-2">
