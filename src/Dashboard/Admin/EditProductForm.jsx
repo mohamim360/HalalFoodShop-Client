@@ -36,7 +36,7 @@ function EditProductForm(props) {
     e.preventDefault();
     const prodId = props.prodId;
     const response = await fetch(
-      `http://localhost:5000/admin/product/products/edit-product/${prodId}`,
+      `https://halalfoodshop.onrender.com/admin/product/products/edit-product/${prodId}`,
       {
         method: "PUT",
         headers: {

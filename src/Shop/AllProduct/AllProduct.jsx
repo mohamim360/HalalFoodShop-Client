@@ -7,7 +7,9 @@ function AllProduct() {
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/shop/all-products");
+    const response = await fetch(
+      "https://halalfoodshop.onrender.com/shop/all-products"
+    );
     const data = await response.json();
     setProducts(data.products);
     setIsLoading(false);
@@ -18,14 +20,17 @@ function AllProduct() {
   }, []);
 
   const cartHandler = async (prodId) => {
-    const response = await fetch(`http://localhost:5000/shop/cart`, {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({prodId}),
-    });
+    const response = await fetch(
+      `https://halalfoodshop.onrender.com/shop/cart`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prodId }),
+      }
+    );
   };
 
   return (
@@ -36,15 +41,13 @@ function AllProduct() {
             <div key={product._id} className="card w-96 bg-base-100 border-4">
               <figure>
                 <img
-                  src={`http://localhost:5000/${product.imageUrl}`} // Constructing the complete URL
+                  src={`https://halalfoodshop.onrender.com/${product.imageUrl}`} // Constructing the complete URL
                   alt="Product"
                 />
               </figure>
               <div className="card-body flex flex-row justify-between flex-wrap">
                 <div className="flex flex-col gap-2">
-                  <h2 className="card-title">
-                    {product.name}
-                  </h2>
+                  <h2 className="card-title">{product.name}</h2>
                 </div>
                 <div className="my-auto flex flex-col gap-2">
                   <div className="card-actions">

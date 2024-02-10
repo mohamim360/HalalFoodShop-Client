@@ -8,11 +8,14 @@ function Cart() {
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/shop/cart", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const response = await fetch(
+      "https://halalfoodshop.onrender.com/shop/cart",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     const data = await response.json();
     setCarts(data.products);
 
@@ -31,7 +34,7 @@ function Cart() {
 
   const deleteCart = async (prodId) => {
     const response = await fetch(
-      `http://localhost:5000/shop/cart/delete-cart/${prodId}`,
+      `https://halalfoodshop.onrender.com/shop/cart/delete-cart/${prodId}`,
       {
         method: "DELETE",
         headers: {

@@ -6,11 +6,14 @@ function AllUsers() {
   const token = localStorage.getItem("token");
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/admin/user/users", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const response = await fetch(
+      "https://halalfoodshop.onrender.com/admin/user/users",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     const data = await response.json();
     setUsers(data.users);
     setIsLoading(false);
@@ -24,14 +27,17 @@ function AllUsers() {
   const changeUserRole = async (userId, currentRole) => {
     const newRole = currentRole === "User" ? "Admin" : "User";
 
-    const response = await fetch(`http://localhost:5000/admin/user/users/${userId}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ role: newRole }),
-    });
+    const response = await fetch(
+      `https://halalfoodshop.onrender.com/admin/user/users/${userId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ role: newRole }),
+      }
+    );
 
     if (response.ok) {
       setUsers((prevUsers) =>
@@ -45,12 +51,15 @@ function AllUsers() {
   };
 
   const deleteUser = async (userId) => {
-    const response = await fetch(`http://localhost:5000/admin/user/users/${userId}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const response = await fetch(
+      `https://halalfoodshop.onrender.com/admin/user/users/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
 
     if (response.ok) {
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
@@ -62,8 +71,8 @@ function AllUsers() {
   return (
     <>
       {!isLoading && (
-      <div className="overflow-x-auto m-auto">
-      <h1 className="text-center p-4 font-bold text-xl">All Users</h1>
+        <div className="overflow-x-auto m-auto">
+          <h1 className="text-center p-4 font-bold text-xl">All Users</h1>
           <table className="table">
             {/* head */}
             <thead>

@@ -27,13 +27,16 @@ function SignUp() {
   const submitHandler = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    const response = await fetch("http://localhost:5000/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://halalfoodshop.onrender.com/auth/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await response.json();
 
     setMessage(data.message);

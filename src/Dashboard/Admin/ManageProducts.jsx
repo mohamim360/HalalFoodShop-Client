@@ -9,7 +9,7 @@ function ManageProducts() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "http://localhost:5000/admin/product/products",
+      "https://halalfoodshop.onrender.com/admin/product/products",
       {
         headers: {
           Authorization: "Bearer " + token,
@@ -27,7 +27,7 @@ function ManageProducts() {
 
   const deleteProduct = async (prodId) => {
     const response = await fetch(
-      `http://localhost:5000/admin/product/products/${prodId}`,
+      `https://halalfoodshop.onrender.com/admin/product/products/${prodId}`,
       {
         method: "DELETE",
         headers: {

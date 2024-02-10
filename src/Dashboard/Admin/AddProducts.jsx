@@ -9,7 +9,7 @@ function AddProducts() {
     quantity: "",
     description: "",
     category: "",
-    image: null // Add image field to store the selected file
+    image: null, // Add image field to store the selected file
   });
 
   const nameHandler = (e) => {
@@ -27,7 +27,7 @@ function AddProducts() {
   const descriptionHandler = (e) => {
     setFormData({ ...formData, description: e.target.value });
   };
-  
+
   const imageHandler = (e) => {
     setFormData({ ...formData, image: e.target.files[0] }); // Update image field with the selected file
   };
@@ -48,7 +48,7 @@ function AddProducts() {
     formDataToSend.append("image", formData.image); // Append the selected file
 
     const response = await fetch(
-      "http://localhost:5000/admin/product/add-products",
+      "https://halalfoodshop.onrender.com/admin/product/add-products",
       {
         method: "POST",
         headers: {
@@ -65,13 +65,17 @@ function AddProducts() {
       quantity: "",
       description: "",
       category: "",
-      image: null // Reset image field after form submission
+      image: null, // Reset image field after form submission
     });
   };
 
   return (
     <>
-      <form className="mx-auto mt-4" onSubmit={handleSubmit} encType="multipart/from-data">
+      <form
+        className="mx-auto mt-4"
+        onSubmit={handleSubmit}
+        encType="multipart/from-data"
+      >
         <div className="form-control w-full rounded-lg border-4 p-8">
           <input
             type="text"
@@ -89,8 +93,8 @@ function AddProducts() {
       file:bg-violet-50 file:text-gray-700
       hover:file:bg-violet-100 m-4
     "
-    name="image"
-    onChange={imageHandler} 
+            name="image"
+            onChange={imageHandler}
           />
 
           <input
